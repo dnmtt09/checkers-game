@@ -1,0 +1,50 @@
+{
+    "parser": "@babel/eslint-parser",
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier/@typescript-eslint",
+      "plugin:import/recommended",
+      "plugin:import/typescript"
+    ],
+    "plugins": [
+      "@babel/eslint",
+      "react",
+      "@typescript-eslint",
+      "prettier",
+      "import"
+    ],
+    "rules": {
+      // Regole personalizzate
+      "react/jsx-curly-brace-expansion": [
+        "warn",
+        {
+          "allow": "same-line"
+        }
+      ],
+      "react/jsx-no-bind": [
+        "error",
+        {"allowFunctions": true}
+      ],
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { "argsIgnorePattern": "^_" }
+      ],
+      "import/order": ["error", {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "alphabetize": { "order": "asc" },
+        "newlinesBetween": "always"
+      }],
+      "import/no-unresolved": ["error", { "caseSensitive": true }],
+      "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+      "prettier/prettier": ["error", { "endOfLine": "auto" }]
+    }
+  }
