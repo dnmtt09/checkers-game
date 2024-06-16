@@ -1,9 +1,6 @@
 <section>
   <ng-container *ngFor="let cS of colorScheme">
-    <button
-      style="width: 150px; padding: 50px 10px"
-      [ngClass]="{ '#000000': cS === 'black' }"
-    >
+    <button>
       {{ cS }}
     </button>
   </ng-container>
