@@ -1,5 +1,10 @@
 import { CommonModule, NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
+
+enum playerColor {
+  red= "red",
+  blue="blue"
+}
 
 @Component({
   selector: 'app-player-color',
@@ -10,6 +15,8 @@ import { Component } from '@angular/core';
 })
 export class PlayerColorComponent {
   colorsAvailable: Record<string, string> = {};
+  readonly pC = playerColor;
+  @Output() colorChoose: EventEmitter<playerColor> = new EventEmitter<playerColor>();
 
   constructor() {
     this.colorsAvailable = {
@@ -19,4 +26,9 @@ export class PlayerColorComponent {
       image2: './assets/img/blue-flag.jpeg',
     };
   }
+
+  choosePlayerColor(playerColor: playerColor): void {
+    this.colorChoose.emit(playerColor);
+  }
+
 }
