@@ -8,10 +8,9 @@ describe('PlayerColorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PlayerColorComponent]
-    })
-    .compileComponents();
-    
+      imports: [PlayerColorComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(PlayerColorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
