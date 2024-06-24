@@ -1,3 +1,8 @@
 <!--recall component for color player-->
-<ng-container *ngIf="playerIsReadyToGame"> </ng-container>
-<app-chessboard></app-chessboard>
+<ng-container *ngIf="playerIsReadyToGame; else chooseColor">
+  <app-chessboard></app-chessboard>
+</ng-container>
+
+<ng-template #chooseColor>
+  <app-player-color (colorChoose)="startGame()"></app-player-color>
+</ng-template>

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Color } from '../../../shared/enum/enumPlayer';
 
 enum playerColor {
   red = 'red',
@@ -16,8 +17,8 @@ enum playerColor {
 export class PlayerColorComponent {
   colorsAvailable: Record<string, string> = {};
   readonly pC = playerColor;
-  isClicked: playerColor | undefined = undefined;
-  @Output() colorChoose: EventEmitter<playerColor> = new EventEmitter<playerColor>();
+  isClicked: Color | undefined = undefined; // rename the variable name
+  @Output() colorChoose: EventEmitter<Color> = new EventEmitter<Color>();
 
   constructor() {
     this.colorsAvailable = {
@@ -30,7 +31,12 @@ export class PlayerColorComponent {
 
   choosePlayerColor(playerColor: playerColor): void {
     this.isClicked = playerColor;
-    this.colorChoose.emit(playerColor);
+  }
+
+  confirm(): void {
+    if (this.isClicked !== undefined) {
+      this.colorChoose.emit(this.isClicked);
+    }
   }
 
   protected readonly playerColor = playerColor;

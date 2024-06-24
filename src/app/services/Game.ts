@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Player } from '../shared/classes/player';
+import { Color } from '../shared/enum/enumPlayer';
 
 @Injectable({ providedIn: 'root' })
 export class Game {
@@ -9,9 +10,7 @@ export class Game {
   private human: Player | undefined = undefined;
   private PC: Player | undefined = undefined;
 
-  constructor() {
-    this.initializeChessboard();
-  }
+  constructor() {}
 
   private initializeChessboard(): void {
     for (let i = 0; i < this.totalChess; i++) {
@@ -25,6 +24,21 @@ export class Game {
       }
     }
     console.log('valore della chessboard  ', this.chessboard);
+  }
+
+  initializePlayers(colorHuman: Color): void {
+    this.human = {
+      color: colorHuman,
+      type: 'human',
+      points: 0,
+    };
+
+    this.human = {
+      color: colorHuman === 'red' ? 'blue' : 'red',
+      type: 'pc',
+      points: 0,
+    };
+    this.initializeChessboard();
   }
 
   getChessboard(): string[] {

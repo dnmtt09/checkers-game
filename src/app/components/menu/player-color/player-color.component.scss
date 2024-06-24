@@ -3,14 +3,16 @@ button {
   border: none;
 }
 
-.border-button {
-  //border: 1px solid black;
-  width: 60rem;
-  max-width: 70rem;
+#confirm-button {
+  position: relative;
+  left: 38rem;
+  top: 2rem;
+  border: 1px solid black !important;
 }
 
-.no-border-button {
-  border: none;
+.width-up-button {
+  width: 60rem;
+  max-width: 70rem;
 }
 
 h2,
