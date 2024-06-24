@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Game } from '../../services/Game';
 
 @Component({
   selector: 'app-chessboard',
@@ -8,4 +9,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './chessboard.component.html',
   styleUrl: './chessboard.component.scss',
 })
-export class ChessboardComponent {}
+export class ChessboardComponent {
+  chessboard: string[] = [];
+  constructor(private gameService: Game) {
+    this.chessboard = this.gameService.getChessboard();
+  }
+}

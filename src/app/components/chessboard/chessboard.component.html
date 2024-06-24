@@ -1,7 +1,8 @@
-<!-- <section>
-  <ng-container *ngFor="let cS of colorScheme">
-    <button>
-      {{ cS }}
-    </button>
-  </ng-container>
-</section> -->
+<button
+  *ngFor="let chess of chessboard"
+  [ngClass]="{
+    'black-color': chess === 'black',
+    'white-color': chess === 'white'
+  }"
+  class="btn btn-lg"
+></button>
