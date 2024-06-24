@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Player} from "../shared/classes/player";
+import { Player } from '../shared/classes/player';
 
 @Injectable({ providedIn: 'root' })
 export class Game {
