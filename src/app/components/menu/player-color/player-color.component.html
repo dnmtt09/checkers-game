@@ -1,0 +1,27 @@
+<h2>Giocatore, prima di giocare, occorre che selezioni il tuo colore.</h2>
+<p>Inserisci il colore</p>
+<ul class="row">
+  <li class="row col-md-6">
+    <button id="id-red" [ngClass]="{ 'border-button': isClicked === playerColor.red }">
+      <img
+        class="col-md-6"
+        (click)="choosePlayerColor(pC.red)"
+        src="{{ colorsAvailable['image1'] }}"
+        alt=""
+      />
+    </button>
+    <span class="col-md-6">{{ colorsAvailable['color1'] }}</span>
+  </li>
+
+  <li class="row col-md-6">
+    <button id="id-blue" [ngClass]="{ 'border-button': isClicked === playerColor.blue }">
+      <img
+        class="col-md-6"
+        (click)="choosePlayerColor(pC.blue)"
+        src="{{ colorsAvailable['image2'] }}"
+        alt=""
+      />
+    </button>
+    <span class="col-md-6">{{ colorsAvailable['color2'] }}</span>
+  </li>
+</ul>

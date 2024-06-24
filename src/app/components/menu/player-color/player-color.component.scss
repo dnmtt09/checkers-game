@@ -1,0 +1,31 @@
+button {
+  background: none;
+  border: none;
+}
+
+.border-button {
+  //border: 1px solid black;
+  width: 60rem;
+  max-width: 70rem;
+}
+
+.no-border-button {
+  border: none;
+}
+
+h2,
+ul {
+  text-align: center;
+}
+
+span {
+  text-align: end;
+}
+
+img {
+  transition: transform 0.5s ease-in-out; /* Add a smooth transition effect */
+}
+
+img:focus {
+  transform: scale(1000000); /* Increase the image size by 1.5 times on focus */
+}
