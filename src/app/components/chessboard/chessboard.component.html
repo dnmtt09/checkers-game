@@ -2,7 +2,9 @@
   *ngFor="let chess of chessboard"
   [ngClass]="{
     'black-color': chess === 'black',
-    'white-color': chess === 'white'
+    'white-color': chess === 'white',
+    'red-color': chess === 'red',
+    'blue-color': chess === 'blue'
   }"
   class="btn btn-lg"
 ></button>

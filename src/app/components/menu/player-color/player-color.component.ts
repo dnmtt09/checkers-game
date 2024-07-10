@@ -28,7 +28,6 @@ export class PlayerColorComponent {
       image2: './assets/img/blue-flag.jpeg',
     };
   }
-
   choosePlayerColor(playerColor: playerColor): void {
     this.isClicked = playerColor;
   }

@@ -7,38 +7,51 @@ export class Game {
   private chessboard: string[] = [];
   private isOdd: boolean = true;
   private readonly totalChess: number = 64;
-  private human: Player | undefined = undefined;
-  private PC: Player | undefined = undefined;
+  private human: Player | null = null;
+  private PC: Player | null = null;
 
-  constructor() {}
+  constructor() {
+  }
 
   private initializeChessboard(): void {
-    for (let i = 0; i < this.totalChess; i++) {
-      if (i % 8 === 0) {
-        this.isOdd = !this.isOdd;
+    if(!!this.human && !!this.PC) {
+      for (let i = 0; i < this.totalChess; i++) {
+        if (i % 8 === 0) {
+          this.isOdd = !this.isOdd;
+        }
+        if (this.isOdd) {
+          this.chessboard.push(i % 2 === 0 ? 'black' : 'white');
+        } else {
+          this.chessboard.push(i % 2 === 0 ? 'white' : 'black');
+        }
       }
-      if (this.isOdd) {
-        this.chessboard.push(i % 2 === 0 ? 'black' : 'white');
-      } else {
-        this.chessboard.push(i % 2 === 0 ? 'white' : 'black');
+      for(let i = 0; i<8; i=i+2) { /* TODO first PC */
+        this.chessboard[i] = this.PC.color;
+      }
+      for(let i = 9; i<16; i=i+2) { /* TODO second PC */
+        this.chessboard[i] = this.PC.color;
+      }
+      for(let i = 48; i<56; i=i+2) { /* TODO second HUMAN */
+        this.chessboard[i] = this.human.color;
+      }
+      for(let i = 57; i<64; i=i+2) { /* TODO second HUMAN */
+        this.chessboard[i] = this.human.color;
       }
     }
-    console.log('valore della chessboard  ', this.chessboard);
   }
 
   initializePlayers(colorHuman: Color): void {
-    this.human = {
-      color: colorHuman,
-      type: 'human',
-      points: 0,
-    };
+      this.human = {
+        color: colorHuman!,
+        points: 0,
+      };
 
-    this.human = {
-      color: colorHuman === 'red' ? 'blue' : 'red',
-      type: 'pc',
-      points: 0,
-    };
-    this.initializeChessboard();
+      this.PC = {
+        color: colorHuman! === 'red' ? 'blue' : 'red',
+        points: 0,
+      };
+      this.initializeChessboard();
+
   }
 
   getChessboard(): string[] {

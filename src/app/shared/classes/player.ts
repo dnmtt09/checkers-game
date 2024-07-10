@@ -5,5 +5,4 @@ export interface Player {
   isTurn?: Types;
   name?: string;
   points: number;
-  type: Types;
 }
