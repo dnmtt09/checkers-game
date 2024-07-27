@@ -3,7 +3,7 @@ import { Player } from '../shared/classes/player';
 import { Color } from '../shared/enum/enumPlayer';
 
 @Injectable({ providedIn: 'root' })
-export class Game {
+export class GameService {
   private chessboard: string[] = [];
   private isOdd: boolean = true;
   private readonly totalChess: number = 64;
