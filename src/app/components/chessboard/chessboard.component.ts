@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Game } from '../../services/Game';
-import {Color} from "../../shared/enum/enumPlayer";
+import { Color } from '../../shared/enum/enumPlayer';
 
 @Component({
   selector: 'app-chessboard',
@@ -10,7 +10,7 @@ import {Color} from "../../shared/enum/enumPlayer";
   templateUrl: './chessboard.component.html',
   styleUrl: './chessboard.component.scss',
 })
-export class ChessboardComponent implements OnInit{
+export class ChessboardComponent implements OnInit {
   chessboard: string[] = [];
   @Input() color: Color | null = null;
 

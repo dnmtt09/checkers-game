@@ -16,7 +16,7 @@ enum playerColor {
 })
 export class PlayerColorComponent {
   colorsAvailable: Record<string, string> = {};
-  readonly pC = playerColor;
+  readonly player = playerColor;
   isClicked: Color | undefined = undefined; // rename the variable name
   @Output() colorChoose: EventEmitter<Color> = new EventEmitter<Color>();
 
@@ -30,13 +30,12 @@ export class PlayerColorComponent {
   }
   choosePlayerColor(playerColor: playerColor): void {
     this.isClicked = playerColor;
+    this.confirm();
   }
 
-  confirm(): void {
+  private confirm(): void {
     if (this.isClicked !== undefined) {
       this.colorChoose.emit(this.isClicked);
     }
   }
-
-  protected readonly playerColor = playerColor;
 }

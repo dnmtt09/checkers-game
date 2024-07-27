@@ -1,28 +1,30 @@
-<h2>Giocatore, prima di giocare, occorre che selezioni il tuo colore.</h2>
-<p>Inserisci il colore</p>
-<ul class="row">
-  <li class="row col-md-6">
-    <button id="id-red" [ngClass]="{ 'width-up-button': isClicked === playerColor.red }">
+<h2>CHESSBOARD GAME!</h2>
+<div class="py-5">
+  <ul class="row">
+    <li class="row col-md-6">
       <img
+        style="width: 80%; height: 80%"
         class="col-md-6"
-        (click)="choosePlayerColor(pC.red)"
+        id="id-red"
         src="{{ colorsAvailable['image1'] }}"
         alt=""
       />
-    </button>
-    <span class="col-md-6">{{ colorsAvailable['color1'] }}</span>
-  </li>
+      <button (click)="choosePlayerColor(player.red)" class="btn btn-lg btn-danger">
+        {{ colorsAvailable['color1'] }}
+      </button>
+    </li>
 
-  <li class="row col-md-6">
-    <button id="id-blue" [ngClass]="{ 'width-up-button': isClicked === playerColor.blue }">
+    <li class="row col-md-6">
       <img
+        id="id-blue"
+        style="width: 80%; height: 80%"
         class="col-md-6"
-        (click)="choosePlayerColor(pC.blue)"
         src="{{ colorsAvailable['image2'] }}"
         alt=""
       />
-    </button>
-    <span class="col-md-6">{{ colorsAvailable['color2'] }}</span>
-  </li>
-</ul>
-<button id="confirm-button" (click)="confirm()">CLICCA QUI PER CONFERMARE</button>
+      <button class="btn btn-lg btn-info" (click)="choosePlayerColor(player.blue)">
+        {{ colorsAvailable['color2'] }}
+      </button>
+    </li>
+  </ul>
+</div>
