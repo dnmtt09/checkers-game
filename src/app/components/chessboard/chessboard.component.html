@@ -2,6 +2,7 @@
   [disabled]="chess === 'black'"
   *ngFor="let chess of chessboard"
   [id]="getIdPiece(chess)"
+  (click)="setPiece(getIdPiece(chess))"
   [ngClass]="{
     'black-color': chess === 'black',
     'white-color': chess === 'white',

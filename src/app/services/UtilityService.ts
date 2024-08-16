@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Player } from '../shared/classes/player';
 import { Color } from '../shared/enum/enumPlayer';
 
-@Injectable({ providedIn: 'root' })
-export class GameService {
+@Injectable()
+export class UtilityService {
   private chessboard: string[] = [];
   private isOdd: boolean = true;
   private readonly totalChess: number = 64;
