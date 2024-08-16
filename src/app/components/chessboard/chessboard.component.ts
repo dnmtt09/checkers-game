@@ -13,7 +13,6 @@ import { Color } from '../../shared/enum/enumPlayer';
 export class ChessboardComponent implements OnInit {
   chessboard: string[] = [];
   @Input() color: Color | null = null;
-  private _idPiece: number = 0;
 
   constructor(private gameService: GameService) {}
 
@@ -23,17 +22,13 @@ export class ChessboardComponent implements OnInit {
   }
 
   getIdPiece(chess: string): string {
-    let id: string = '';
     switch (chess) {
       case 'red':
-        id = 'id-red';
-        break;
+        return 'id-red';
       case 'blue':
-        id = 'id-blue';
-        break;
+        return 'id-blue';
       default:
-        id = 'none';
+        return 'none';
     }
-    return id;
   }
 }
