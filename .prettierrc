@@ -4,7 +4,9 @@
   "bracketSpacing": true,
   "arrowParens": "avoid",
   "semi": true,
-  "printWidth": 100,
+  "printWidth": 80,
+  "useTabs": false,
+  "htmlWhitespaceSensitivity": "ignore",
   "tabWidth": 2,
-  "endOfLine": "lf"
+  "endOfLine": "auto"
 }

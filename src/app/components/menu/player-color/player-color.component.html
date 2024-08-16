@@ -9,7 +9,10 @@
         src="{{ colorsAvailable['image1'] }}"
         alt=""
       />
-      <button (click)="choosePlayerColor(player.red)" class="btn btn-lg btn-danger">
+      <button
+        (click)="choosePlayerColor(player.red)"
+        class="btn btn-lg btn-danger"
+      >
         {{ colorsAvailable['color1'] }}
       </button>
     </li>
@@ -22,7 +25,10 @@
         src="{{ colorsAvailable['image2'] }}"
         alt=""
       />
-      <button class="btn btn-lg btn-info" (click)="choosePlayerColor(player.blue)">
+      <button
+        class="btn btn-lg btn-info"
+        (click)="choosePlayerColor(player.blue)"
+      >
         {{ colorsAvailable['color2'] }}
       </button>
     </li>
