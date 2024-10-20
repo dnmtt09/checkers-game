@@ -20,13 +20,13 @@
 
 .chessboard {
   display: grid;
-  grid-template-columns: repeat(8, 125px); /* 8 colonne con celle di 70px */
-  grid-template-rows: repeat(8, 125px); /* 8 righe con celle di 70px */
-  gap: 5px; /* Spaziatura tra le celle */
+  grid-template-columns: repeat(8, 125px);
+  grid-template-rows: repeat(8, 125px);
+  gap: 5px;
 }
 
 .cell {
-  width: 130px; //75px
+  width: 130px;
   height: 130px;
 }
 
@@ -43,7 +43,6 @@
 }
 
 button {
-  //padding: 43px 89px;
   border: 1px solid;
   background: none;
 }
