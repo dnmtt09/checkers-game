@@ -11,6 +11,24 @@
 // .black-color {
 //     color: ;
 // }
+.chessboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.chessboard {
+  display: grid;
+  grid-template-columns: repeat(8, 125px); /* 8 colonne con celle di 70px */
+  grid-template-rows: repeat(8, 125px); /* 8 righe con celle di 70px */
+  gap: 5px; /* Spaziatura tra le celle */
+}
+
+.cell {
+  width: 130px; //75px
+  height: 130px;
+}
 
 .black-color {
   background-color: black;
@@ -25,7 +43,7 @@
 }
 
 button {
-  padding: 43px 89px;
+  //padding: 43px 89px;
   border: 1px solid;
   background: none;
 }

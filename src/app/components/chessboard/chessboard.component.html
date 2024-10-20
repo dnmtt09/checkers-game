@@ -1,13 +1,16 @@
-<button
-  [disabled]="chess === 'black'"
-  *ngFor="let chess of chessboard"
-  [id]="getIdPiece(chess)"
-  (click)="setPiece(getIdPiece(chess))"
-  [ngClass]="{
-    'black-color': chess === 'black',
-    'white-color': chess === 'white',
-    'red-color': chess === 'red',
-    'blue-color': chess === 'blue'
-  }"
-  class="btn btn-lg"
-></button>
+<div class="chessboard-container">
+  <div class="chessboard">
+    <button
+      [disabled]="chess === 'black'"
+      *ngFor="let chess of chessboard; let i = index"
+      (click)="setPiece(i)"
+      [ngClass]="{
+        'black-color': chess === 'black',
+        'white-color': chess === 'white',
+        'red-color': chess === 'red',
+        'blue-color': chess === 'blue'
+      }"
+      class="cell"
+    ></button>
+  </div>
+</div>
