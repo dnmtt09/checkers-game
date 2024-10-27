@@ -11,24 +11,29 @@ export class PcService {
 
   constructor(private utilityService: UtilityService) {}
   //TODO gestione in modalita' asincrona
+
   pcTurn(humanId: number) {
-    let stopCheck = false; // TODO to fix
+    let stop = false;
     this.chessboard.map((chess, index) => {
       //TODO quando realizzo con RXJS, non ho accesso all'indice
-      if (chess === this.getInfo.color) {
-        if (this.isCapture(index) && !stopCheck) {
+
+      if (chess === this.getInfo.color && !stop) {
+        if (this.isCapture(index)) {
           if (this.isFree(index, 7)) {
             this.chessboard[index] = '';
             this.chessboard[index + 7] = this.getInfo.color;
+            stop = true;
           } else if (this.isFree(index, 9)) {
             this.chessboard[index] = '';
             this.chessboard[index + 9] = this.getInfo.color;
+            stop = true;
           }
-          stopCheck = true; // TODO to fix
+        } else {
+          this.randomMove();
+          stop = true;
         }
       }
     });
-    // altri metodi
   }
 
   set setInfo(color: Color) {
@@ -52,8 +57,38 @@ export class PcService {
   }
   private isCapture(id: number) {
     return (
-      this.chessboard[id + 7] === this._humanColor ||
-      this.chessboard[id + 9] === this._humanColor
+      this.chessboard[id + 14] === this._humanColor ||
+      this.chessboard[id + 18] === this._humanColor
     );
+  }
+
+  private prova() {
+    for (let i = 0; i < 8; i++) {
+      console.log('\n');
+    }
+    for (let y = 0; y < 8; y++) {
+      console.log('|');
+      console.log(this.chessboard[y]);
+    }
+  }
+
+  private randomMove() {
+    let stop = false;
+    console.log('valore del colore in randomMove', this.getInfo.color);
+    this.chessboard.map((chess, index) => {
+      //TODO quando realizzo con RXJS, non ho accesso all'indice
+
+      if (chess === this.getInfo.color && !stop) {
+        if (this.isFree(index, 7)) {
+          this.chessboard[index] = '';
+          this.chessboard[index + 7] = this.getInfo.color;
+          stop = true;
+        } else if (this.isFree(index, 9)) {
+          this.chessboard[index] = '';
+          this.chessboard[index + 9] = this.getInfo.color;
+          stop = true;
+        }
+      }
+    });
   }
 }
