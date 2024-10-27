@@ -30,6 +30,20 @@
   height: 130px;
 }
 
+@media screen and (min-width: 1440px) {
+  .chessboard-container {
+    height: 100vh;
+  }
+  .chessboard {
+    grid-template-columns: repeat(8, 75px);
+    grid-template-rows: repeat(8, 75px);
+  }
+  .cell {
+    width: 80px;
+    height: 80px;
+  }
+}
+
 .black-color {
   background-color: black;
 }
