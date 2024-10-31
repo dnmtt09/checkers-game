@@ -10,11 +10,8 @@ export class PcService {
   private _humanColor?: Color;
 
   constructor(private utilityService: UtilityService) {}
-  //TODO gestione in modalita' asincrona
 
-  pcTurn(humanId: number) {
-
-  }
+  pcTurn(humanId: number) {}
 
   set setInfo(color: Color) {
     this._PC! = {
