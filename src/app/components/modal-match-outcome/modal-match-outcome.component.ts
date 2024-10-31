@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './modal-match-outcome.component.scss',
 })
 export class ModalMatchOutcomeComponent {
-  isWin: boolean = false;
+  isWin: boolean = true;
 
   playerIsWin(player: any): void {
     this.isWin = true;
