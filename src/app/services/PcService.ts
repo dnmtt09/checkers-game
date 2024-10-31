@@ -1,8 +1,7 @@
-import {UtilityService} from './UtilityService';
-import {Injectable} from '@angular/core';
-import {Player} from '../shared/classes/player';
-import {Color} from '../shared/enum/enumPlayer';
-
+import { UtilityService } from './UtilityService';
+import { Injectable } from '@angular/core';
+import { Player } from '../shared/classes/player';
+import { Color } from '../shared/enum/enumPlayer';
 
 @Injectable({ providedIn: 'root' })
 export class PcService {
