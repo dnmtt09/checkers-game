@@ -2,16 +2,20 @@ import { UtilityService } from './UtilityService';
 import { Injectable } from '@angular/core';
 import { Player } from '../shared/classes/player';
 import { Color } from '../shared/enum/enumPlayer';
+import { extractLicenses } from '@angular-devkit/build-angular/src/tools/esbuild/license-extractor';
 
 @Injectable({ providedIn: 'root' })
 export class PcService {
   private chessboard = this.utilityService.getChessboard();
   private _PC?: Player;
   private _humanColor?: Color;
+  private whiteChess = 'white';
 
   constructor(private utilityService: UtilityService) {}
 
-  pcTurn(humanId: number) {}
+  pcTurn(humanId: number) {
+    this.randomMove();
+  }
 
   set setInfo(color: Color) {
     this._PC! = {
@@ -26,5 +30,40 @@ export class PcService {
 
   set humanColor(color: Color) {
     this._humanColor = color;
+  }
+
+  private randomMove() {
+    const index = this.chessboard
+      .map((chess, index) => (chess === this._PC?.color ? index : -1))
+      .filter(index => index !== -1);
+    let stop = true;
+    while (stop) {
+      const nextMove = this.isFree(this.getRandomIntFromPcPosition(index));
+      if (!!nextMove) {
+        this.chessboard[nextMove.currentPosition] = '';
+        this.chessboard[nextMove.currentPosition + nextMove.nextMove] =
+          this._PC!.color;
+        stop = false;
+      }
+    }
+  }
+
+  private isFree(currentMove: number) {
+    if (this.chessboard[currentMove + 7] === this.whiteChess)
+      return this.createPositionResponse(currentMove, 7);
+    else if (this.chessboard[currentMove + 9] === this.whiteChess)
+      return this.createPositionResponse(currentMove, 9);
+    return null;
+  }
+
+  private createPositionResponse(currentPosition: number, nextMove: number) {
+    return {
+      currentPosition: currentPosition,
+      nextMove: nextMove,
+    };
+  }
+
+  private getRandomIntFromPcPosition(maxNumber: number[]) {
+    return maxNumber[Math.floor(Math.random() * maxNumber.length)];
   }
 }
