@@ -30,7 +30,7 @@
   height: 130px;
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (max-width: 1600px) {
   .chessboard-container {
     height: 100vh;
   }
