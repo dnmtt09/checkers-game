@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Player} from '../shared/classes/player';
 import {Color} from '../shared/enum/enumPlayer';
 
+
 @Injectable({ providedIn: 'root' })
 export class PcService {
   private chessboard = this.utilityService.getChessboard();
@@ -12,12 +13,18 @@ export class PcService {
 
   constructor(private utilityService: UtilityService) {}
 
-  pcTurn(humanId: number) {
+  pcTurn() {
     const index = this.extractIndexChess();
-    if(!this.isCapturingByHuman(index)){
-      this.randomMove(index);
-    }
+    let methodIsNotExecute: boolean;
+    methodIsNotExecute = this.captureHumanPiece(index);
 
+    if (methodIsNotExecute) {
+      methodIsNotExecute = this.isCapturingByHuman(index);
+      if (methodIsNotExecute) {
+        const isDrawTentative = this.randomMove(index);
+        console.log(isDrawTentative === 100 ? "e' un pareggio" : '');
+      }
+    }
   }
 
   set setInfo(color: Color) {
@@ -37,19 +44,26 @@ export class PcService {
 
   private randomMove(index: number[]) {
     let stop = true;
-    while (stop) {
+    let isDrawTentative = 0;
+    let sameMove = 0;
+    while (stop && isDrawTentative < 100) {
       const nextMove = this.isFree(this.getRandomIntFromPcPosition(index));
       if (!!nextMove) {
         this.chessboard[nextMove.currentPosition] = '';
         this.chessboard[nextMove.currentPosition + nextMove.nextMove] =
           this._PC!.color;
         stop = false;
+      } else {
+        console.log('entri qui');
+        isDrawTentative++;
       }
     }
+    return isDrawTentative;
+    //TODO gestire caso pareggio
   }
 
   private isCapturingByHuman(index: number[]) {
-    let p = false;
+    let methodIsNotExecute = true;
     index.forEach(i => {
       if (
         this.chessboard[i + 7] === this._humanColor ||
@@ -60,12 +74,46 @@ export class PcService {
           this.chessboard[isFree.currentPosition] = '';
           this.chessboard[isFree.currentPosition + isFree.nextMove] =
             this._PC!.color;
-          p = true;
+          methodIsNotExecute = false;
           return;
         }
       }
     });
-    return p;
+    return methodIsNotExecute;
+  }
+
+  private captureHumanPiece(index: number[]) {
+    let methodIsNotExecute = true;
+    index.forEach(i => {
+      const isCaptureFree = this.isCaptureFree(i);
+      if (!!isCaptureFree) {
+        this.chessboard[isCaptureFree.currentPosition] = '';
+        this.chessboard[
+          isCaptureFree.currentPosition + isCaptureFree.nextMove
+        ] = this._PC!.color;
+
+        methodIsNotExecute = false;
+        return;
+      }
+    });
+    return methodIsNotExecute;
+  }
+
+  private isCaptureFree(currentMove: number) {
+    if (
+      this.chessboard[currentMove + 7] === this._humanColor &&
+      this.chessboard[currentMove + 14] === this.whiteChess
+    ) {
+      this.chessboard[currentMove + 7] = '';
+      return this.createPositionResponse(currentMove, 14);
+    } else if (
+      this.chessboard[currentMove + 9] === this._humanColor &&
+      this.chessboard[currentMove + 18] === this.whiteChess
+    ) {
+      this.chessboard[currentMove + 9] = '';
+      return this.createPositionResponse(currentMove, 18);
+    }
+    return null;
   }
 
   private isFree(currentMove: number) {

@@ -47,7 +47,7 @@ export class ChessboardComponent implements OnInit {
         this.isFirstMove = true;
         this.chessboard[this.previousChoice] = '';
         this.chessboard[id] = this.color!;
-        this.pcService.pcTurn(id);
+        this.pcService.pcTurn();
       }
     }
   }
