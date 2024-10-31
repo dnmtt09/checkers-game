@@ -1,8 +1,7 @@
-import { UtilityService } from './UtilityService';
-import { Injectable } from '@angular/core';
-import { Player } from '../shared/classes/player';
-import { Color } from '../shared/enum/enumPlayer';
-import { extractLicenses } from '@angular-devkit/build-angular/src/tools/esbuild/license-extractor';
+import {UtilityService} from './UtilityService';
+import {Injectable} from '@angular/core';
+import {Player} from '../shared/classes/player';
+import {Color} from '../shared/enum/enumPlayer';
 
 @Injectable({ providedIn: 'root' })
 export class PcService {
@@ -14,7 +13,11 @@ export class PcService {
   constructor(private utilityService: UtilityService) {}
 
   pcTurn(humanId: number) {
-    this.randomMove();
+    const index = this.extractIndexChess();
+    if(!this.isCapturingByHuman(index)){
+      this.randomMove(index);
+    }
+
   }
 
   set setInfo(color: Color) {
@@ -32,10 +35,7 @@ export class PcService {
     this._humanColor = color;
   }
 
-  private randomMove() {
-    const index = this.chessboard
-      .map((chess, index) => (chess === this._PC?.color ? index : -1))
-      .filter(index => index !== -1);
+  private randomMove(index: number[]) {
     let stop = true;
     while (stop) {
       const nextMove = this.isFree(this.getRandomIntFromPcPosition(index));
@@ -46,6 +46,26 @@ export class PcService {
         stop = false;
       }
     }
+  }
+
+  private isCapturingByHuman(index: number[]) {
+    let p = false;
+    index.forEach(i => {
+      if (
+        this.chessboard[i + 7] === this._humanColor ||
+        this.chessboard[i + 9] === this._humanColor
+      ) {
+        const isFree = this.isFree(i);
+        if (!!isFree) {
+          this.chessboard[isFree.currentPosition] = '';
+          this.chessboard[isFree.currentPosition + isFree.nextMove] =
+            this._PC!.color;
+          p = true;
+          return;
+        }
+      }
+    });
+    return p;
   }
 
   private isFree(currentMove: number) {
@@ -65,5 +85,11 @@ export class PcService {
 
   private getRandomIntFromPcPosition(maxNumber: number[]) {
     return maxNumber[Math.floor(Math.random() * maxNumber.length)];
+  }
+
+  private extractIndexChess() {
+    return this.chessboard
+      .map((chess, index) => (chess === this._PC?.color ? index : -1))
+      .filter(index => index !== -1);
   }
 }

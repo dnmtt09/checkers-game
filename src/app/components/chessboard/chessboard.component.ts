@@ -17,6 +17,7 @@ export class ChessboardComponent implements OnInit {
   @Input() color: Color | undefined;
   private isFirstMove = true;
   private previousChoice = 0;
+  private startGame = false;
 
   constructor(
     private utilityService: UtilityService,
@@ -33,18 +34,21 @@ export class ChessboardComponent implements OnInit {
       this.pcService.getInfo,
       this.humanService.getInfo,
     );
+    this.startGame = true;
   }
 
   setPiece(id: number): void {
     /* TODO usare lo HumanService*/
-    if (this.isFirstMove) {
-      this.isFirstMove = false;
-      this.previousChoice = id;
-    } else {
-      this.isFirstMove = true;
-      this.chessboard[this.previousChoice] = '';
-      this.chessboard[id] = this.color!;
-      this.pcService.pcTurn(id);
+    if (this.startGame) {
+      if (this.isFirstMove) {
+        this.isFirstMove = false;
+        this.previousChoice = id;
+      } else {
+        this.isFirstMove = true;
+        this.chessboard[this.previousChoice] = '';
+        this.chessboard[id] = this.color!;
+        this.pcService.pcTurn(id);
+      }
     }
   }
 }
