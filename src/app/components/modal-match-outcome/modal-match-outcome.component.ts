@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,9 +9,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './modal-match-outcome.component.scss',
 })
 export class ModalMatchOutcomeComponent {
-  isWin: boolean = true;
-
-  playerIsWin(player: any): void {
-    this.isWin = true;
-  }
+  @Input() message: string = '';
+  @Input() player: string = '';
 }
