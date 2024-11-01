@@ -4,11 +4,12 @@ import { UtilityService } from '../../services/UtilityService';
 import { Color } from '../../shared/enum/enumPlayer';
 import { PcService } from '../../services/PcService';
 import { HumanService } from '../../services/HumanService';
+import {ModalMatchOutcomeComponent} from "../modal-match-outcome/modal-match-outcome.component";
 
 @Component({
   selector: 'app-chessboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ModalMatchOutcomeComponent],
   templateUrl: './chessboard.component.html',
   styleUrl: './chessboard.component.scss',
 })
