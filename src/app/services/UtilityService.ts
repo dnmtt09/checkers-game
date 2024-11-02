@@ -12,34 +12,53 @@ export class UtilityService {
   constructor() {}
 
   initializeChessboard(PC: Player, human: Player): void {
+    const pcPieces = [0,2,4,6,9,11,13,15];
+    const humanPieces = [48,50,52,54,57,59,61,63];
     if (!!human && !!PC) {
-      for (let i = 0; i < this.totalChess; i++) {
-        if (i % 8 === 0) {
-          this.isOdd = !this.isOdd;
-        }
-        if (this.isOdd) {
-          this.chessboard.push(i % 2 === 0 ? 'black' : 'white');
-        } else {
-          this.chessboard.push(i % 2 === 0 ? 'white' : 'black');
-        }
+      for(let i =0; i< this.totalChess; i++) {
+          if (i % 8 === 0) {
+            this.isOdd = !this.isOdd;
+          }
+          if (this.isOdd) {
+            this.chessboard.push(i % 2 === 0 ? 'black' : 'white');
+          } else {
+            this.chessboard.push(i % 2 === 0 ? 'white' : 'black');
+          }
       }
-      for (let i = 0; i < 8; i = i + 2) {
-        /* TODO first PC */
-        this.chessboard[i] = PC.color;
-      }
-      for (let i = 9; i < 16; i = i + 2) {
-        /* TODO second PC */
-        this.chessboard[i] = PC.color;
-      }
-      for (let i = 48; i < 56; i = i + 2) {
-        /* TODO second HUMAN */
-        this.chessboard[i] = human.color;
-      }
-      for (let i = 57; i < 64; i = i + 2) {
-        /* TODO second HUMAN */
-        this.chessboard[i] = human.color;
+      for(let i =0; i< 8; i++) {
+        this.chessboard[pcPieces[i]] = PC.color;
+        this.chessboard[humanPieces[i]] = human.color;
       }
     }
+    //   for (let i = 0; i < this.totalChess; i++) {
+    //     if (i % 8 === 0) {
+    //       this.isOdd = !this.isOdd;
+    //     }
+    //     if (this.isOdd) {
+    //       this.chessboard.push(i % 2 === 0 ? 'black' : 'white');
+    //     } else {
+    //       this.chessboard.push(i % 2 === 0 ? 'white' : 'black');
+    //     }
+    //   }
+    //
+    //   for (let i = 0; i < 8; i = i + 2) {
+    //     /* TODO first PC */
+    //     this.chessboard[i] = PC.color;
+    //   }
+    //   for (let i = 9; i < 16; i = i + 2) {
+    //     /* TODO second PC */
+    //     this.chessboard[i] = PC.color;
+    //   }
+    //   for (let i = 48; i < 56; i = i + 2) {
+    //     /* TODO second HUMAN */
+    //     this.chessboard[i] = human.color;
+    //   }
+    //   for (let i = 57; i < 64; i = i + 2) {
+    //     /* TODO second HUMAN */
+    //     this.chessboard[i] = human.color;
+    //   }
+    // }
+
   }
 
   getChessboard(): string[] {
