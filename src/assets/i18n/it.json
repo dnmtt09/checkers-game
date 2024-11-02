@@ -1,2 +1,26 @@
 {
+  "menu": {
+    "reset": "Reset dei campi",
+    "next": "Inizio gioco",
+    "nameApplication": "Gioco Dama",
+    "welcomeOption": "Benvenuto Giocatore al gioco della dama",
+    "options": {
+      "newGame": "Nuova Partita",
+      "modeToPlay": "PC/Human o Uman/Uman",
+      "pcVsHuman": "PCvsUmano",
+      "humanVsHuman": "UmanovsUmano",
+      "colorHuman": "Scegliere colore pedina",
+      "red": "Rosso",
+      "blue": "Blu",
+      "degreeOfDifficult": "Scegliere il livello di difficoltà",
+      "low": "Basso",
+      "medium": "Medio",
+      "hight": "Alto",
+      "choiceLanguage": "Impostare lingua sistema",
+      "it": "Italiano",
+      "en": "Inglese"
+
+
+    }
+  }
 }
