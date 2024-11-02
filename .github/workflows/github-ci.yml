@@ -23,7 +23,7 @@ jobs:
           node-version: '18.13.0'
 
       - name: Install dependencies
-        run: npm i
+        run: npm ci
 
       - name: Build project
         run: npm run build
@@ -41,7 +41,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install dependencies
-        run: npm i
+        run: npm ci
       - name: Format code with prettier
         run: npm run prettier
       - name: Commit & Push changes
