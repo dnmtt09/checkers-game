@@ -1,12 +1,12 @@
 <ng-container *ngIf="isClicked == undefined; else game">
   <h2 class="text-center">{{ "menu.nameApplication" | translate }}</h2>
-  <section class="py-5 ">
+  <section class="py-5">
     <form [formGroup]="form" (ngSubmit)="choosePlayerColor()">
       <section class="menu-container">
         <h2 class="text-center">{{ "menu.welcomeOption" | translate }}</h2>
         <div
           *ngFor="let option of getOptions; let i = index"
-          class="row justify my-4 ">
+          class="row justify my-4">
           <div class="col-md-6">
             <span>{{ "menu.options." + option.title | translate }}</span>
           </div>
@@ -42,5 +42,5 @@
   </section>
 </ng-container>
 <ng-template #game>
-      <app-chessboard [color]="isClicked"></app-chessboard>
+  <app-chessboard [color]="isClicked"></app-chessboard>
 </ng-template>
