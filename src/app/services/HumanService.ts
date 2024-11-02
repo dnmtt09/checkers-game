@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { UtilityService } from './UtilityService';
-import { Player } from '../shared/classes/player';
-import { Color } from '../shared/enum/enumPlayer';
+import { Injectable } from "@angular/core";
+import { UtilityService } from "./UtilityService";
+import { Player } from "../shared/classes/player";
+import { Color } from "../shared/enum/enumPlayer";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class HumanService {
   private _chessboard: string[];
   private human?: Player;
@@ -12,7 +12,7 @@ export class HumanService {
   }
 
   setPiece(previous: number, next: number): void {
-    this._chessboard[previous] = '';
+    this._chessboard[previous] = "";
     this._chessboard[next] = this.getInfo.color;
   }
 

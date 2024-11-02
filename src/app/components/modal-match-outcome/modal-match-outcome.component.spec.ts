@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ModalMatchOutcomeComponent } from './modal-match-outcome.component';
+import { ModalMatchOutcomeComponent } from "./modal-match-outcome.component";
 
-describe('ModalMatchOutcomeComponent', () => {
+describe("ModalMatchOutcomeComponent", () => {
   let component: ModalMatchOutcomeComponent;
   let fixture: ComponentFixture<ModalMatchOutcomeComponent>;
 
@@ -16,7 +16,7 @@ describe('ModalMatchOutcomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

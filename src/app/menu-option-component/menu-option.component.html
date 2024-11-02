@@ -1,0 +1,46 @@
+<ng-container *ngIf="isClicked == undefined; else game">
+  <h2 class="text-center">{{ "menu.nameApplication" | translate }}</h2>
+  <section class="py-5 ">
+    <form [formGroup]="form" (ngSubmit)="choosePlayerColor()">
+      <section class="menu-container">
+        <h2 class="text-center">{{ "menu.welcomeOption" | translate }}</h2>
+        <div
+          *ngFor="let option of getOptions; let i = index"
+          class="row justify my-4 ">
+          <div class="col-md-6">
+            <span>{{ "menu.options." + option.title | translate }}</span>
+          </div>
+          <div class="col-md-6">
+            <div
+              *ngFor="let choice of option.choices | keyvalue"
+              class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                [formControlName]="option.title"
+                [name]="option.title"
+                [value]="choice.key"
+                id="{{ option.title + '_' + choice.key }}" />
+              <label
+                class="form-check-label"
+                for="{{ option.title + '_' + choice.key }}">
+                {{ "menu.options." + choice.value | translate }}
+              </label>
+            </div>
+          </div>
+        </div>
+        <section class="align-items-center text-center py-3">
+          <button class="btn btn-outline-info me-4" (click)="reset()">
+            {{ "menu.reset" | translate }}
+          </button>
+          <button class="btn btn-danger" [disabled]="form.invalid">
+            {{ "menu.next" | translate }}
+          </button>
+        </section>
+      </section>
+    </form>
+  </section>
+</ng-container>
+<ng-template #game>
+      <app-chessboard [color]="isClicked"></app-chessboard>
+</ng-template>

@@ -1,17 +1,17 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
-import { UtilityService } from '../../services/UtilityService';
-import { Color } from '../../shared/enum/enumPlayer';
-import { PcService } from '../../services/PcService';
-import { HumanService } from '../../services/HumanService';
-import {ModalMatchOutcomeComponent} from "../modal-match-outcome/modal-match-outcome.component";
+import { CommonModule } from "@angular/common";
+import { Component, Input, OnInit } from "@angular/core";
+import { UtilityService } from "../../services/UtilityService";
+import { Color } from "../../shared/enum/enumPlayer";
+import { PcService } from "../../services/PcService";
+import { HumanService } from "../../services/HumanService";
+import { ModalMatchOutcomeComponent } from "../modal-match-outcome/modal-match-outcome.component";
 
 @Component({
-  selector: 'app-chessboard',
+  selector: "app-chessboard",
   standalone: true,
   imports: [CommonModule, ModalMatchOutcomeComponent],
-  templateUrl: './chessboard.component.html',
-  styleUrl: './chessboard.component.scss',
+  templateUrl: "./chessboard.component.html",
+  styleUrl: "./chessboard.component.scss",
 })
 export class ChessboardComponent implements OnInit {
   chessboard: string[] = [];
@@ -23,7 +23,7 @@ export class ChessboardComponent implements OnInit {
   constructor(
     private utilityService: UtilityService,
     private pcService: PcService,
-    private humanService: HumanService,
+    private humanService: HumanService
   ) {}
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class ChessboardComponent implements OnInit {
     this.pcService.humanColor = this.humanService.getInfo.color;
     this.utilityService.initializeChessboard(
       this.pcService.getInfo,
-      this.humanService.getInfo,
+      this.humanService.getInfo
     );
     this.startGame = true;
   }
@@ -46,7 +46,7 @@ export class ChessboardComponent implements OnInit {
         this.previousChoice = id;
       } else {
         this.isFirstMove = true;
-        this.chessboard[this.previousChoice] = '';
+        this.chessboard[this.previousChoice] = "";
         this.chessboard[id] = this.color!;
         this.pcService.pcTurn();
       }

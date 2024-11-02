@@ -1,13 +1,17 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig, importProvidersFrom } from "@angular/core";
+import { provideRouter } from "@angular/router";
 
-import { routes } from './app.routes';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { HttpClient, HttpClientModule, provideHttpClient } from '@angular/common/http';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { routes } from "./app.routes";
+import { provideAnimations } from "@angular/platform-browser/animations";
+import {
+  HttpClient,
+  HttpClientModule,
+  provideHttpClient,
+} from "@angular/common/http";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 export function HttpLoaderFactory(httpClient: HttpClient) {
-  return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(httpClient, "./assets/i18n/", ".json");
 }
 
 export const provideTranslation = () => ({
@@ -22,7 +26,10 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
     provideHttpClient(),
-    importProvidersFrom([HttpClientModule, TranslateModule.forRoot(provideTranslation())]),
+    importProvidersFrom([
+      HttpClientModule,
+      TranslateModule.forRoot(provideTranslation()),
+    ]),
     provideRouter(routes),
   ],
 };

@@ -1,3 +1,3 @@
-export type Color = 'red' | 'blue';
+export type Color = "red" | "blue";
 
-export type Types = 'human' | 'pc';
+export type Types = "human" | "pc";

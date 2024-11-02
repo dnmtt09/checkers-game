@@ -1,4 +1,4 @@
-import { Color, Types } from '../enum/enumPlayer';
+import { Color, Types } from "../enum/enumPlayer";
 
 export interface Player {
   color: Color;
