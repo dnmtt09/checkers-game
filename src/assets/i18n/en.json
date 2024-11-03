@@ -1,4 +1,7 @@
 {
+  "modalWaiting": {
+    "loading": "Loading..."
+  },
   "menu": {
     "reset": "Reset fields",
     "next": "Play Game",
@@ -7,8 +10,8 @@
     "options": {
       "newGame": "New Game",
       "modeToPlay": "PC/Human or Uman/Uman",
-      "pcVsHuman": "PCvsUmano",
-      "humanVsHuman": "UmanovsUmano",
+      "pcVsHuman": "PCvsUman",
+      "humanVsHuman": "UmanvsUman",
       "colorHuman": "Choice color piece",
       "red": "Red",
       "blue": "Blue",

@@ -1,4 +1,7 @@
 {
+  "modalWaiting": {
+    "loading": "Caricamento..."
+  },
   "menu": {
     "reset": "Reset dei campi",
     "next": "Inizio gioco",

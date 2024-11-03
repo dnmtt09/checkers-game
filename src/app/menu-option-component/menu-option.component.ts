@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, OnDestroy, Output } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
 import {
   FormBuilder,
@@ -11,6 +11,8 @@ import {
 } from "@angular/forms";
 import { Color } from "../shared/enum/enumPlayer";
 import { ChessboardComponent } from "../components/chessboard/chessboard.component";
+import { Subject } from "rxjs";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Component({
   selector: "app-menu-option",
@@ -26,9 +28,7 @@ import { ChessboardComponent } from "../components/chessboard/chessboard.compone
   styleUrl: "./menu-option.component.scss",
 })
 export class MenuOptionComponent {
-  playerIsReadyToGame: boolean = false;
   color?: Color;
-  optionFromUser?: Record<string, string>;
 
   form: UntypedFormGroup;
   readonly options = {
@@ -64,7 +64,8 @@ export class MenuOptionComponent {
   };
   readonly getOptions = Object.values(this.options);
   isClicked?: Color; //TODO rename the variable name
-  @Output() colorChoose: EventEmitter<Color> = new EventEmitter<Color>();
+  @Output() colorChoose = new EventEmitter<Color>();
+  @Output() systemLanguage = new EventEmitter<string>();
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -73,19 +74,22 @@ export class MenuOptionComponent {
       degreeOfDifficult: new UntypedFormControl("low", [Validators.required]),
       choiceLanguage: new UntypedFormControl("it", [Validators.required]),
     });
+
+    this.form.valueChanges.pipe(takeUntilDestroyed()).subscribe((status) => {
+      this.systemLanguage.emit(status.choiceLanguage);
+    });
   }
 
   choosePlayerColor(): void {
     if (this.form.valid) {
       const optionFromUser = this.form.getRawValue();
       this.isClicked = optionFromUser["colorHuman"];
-      console.log(typeof this.isClicked);
       this.confirm();
     }
   }
 
   reset() {
-    this.form.reset();
+    this.form.reset({degreeOfDifficult: "low", choiceLanguage: "it"});
   }
 
   private confirm(): void {

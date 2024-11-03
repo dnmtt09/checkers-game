@@ -1,5 +1,6 @@
 <main id="wallpaper">
   <router-outlet></router-outlet>
-  <app-menu-option></app-menu-option>
+  <app-menu-option
+    (systemLanguage)="setSystemLanguage($event)"></app-menu-option>
   <footer></footer>
 </main>

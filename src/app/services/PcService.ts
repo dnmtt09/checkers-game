@@ -1,7 +1,8 @@
-import { UtilityService } from "./UtilityService";
-import { Injectable } from "@angular/core";
-import { Player } from "../shared/classes/player";
-import { Color } from "../shared/enum/enumPlayer";
+import {UtilityService} from "./UtilityService";
+import {Injectable} from "@angular/core";
+import {Player} from "../shared/classes/player";
+import {Color} from "../shared/enum/enumPlayer";
+import {timer} from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class PcService {
@@ -13,6 +14,7 @@ export class PcService {
   constructor(private utilityService: UtilityService) {}
 
   pcTurn() {
+    this.setWaitPc();
     const index = this.extractIndexChess();
     let methodIsNotExecute: boolean;
     methodIsNotExecute = this.captureHumanPiece(index);
@@ -138,5 +140,13 @@ export class PcService {
     return this.chessboard
       .map((chess, index) => (chess === this._PC?.color ? index : -1))
       .filter((index) => index !== -1);
+  }
+
+  private setWaitPc() {
+    this.utilityService.setStatusWaitModal(true);
+    timer(3000).subscribe(() => {
+      console.log('ci entri');
+      this.utilityService.setStatusWaitModal(false);
+    })
   }
 }
