@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ChessboardComponent } from "./chessboard.component";
+import { MainComponentComponent } from "./main-component.component";
 
-describe("ChessboardComponent", () => {
-  let component: ChessboardComponent;
-  let fixture: ComponentFixture<ChessboardComponent>;
+describe("MainComponentComponent", () => {
+  let component: MainComponentComponent;
+  let fixture: ComponentFixture<MainComponentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChessboardComponent],
+      imports: [MainComponentComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ChessboardComponent);
+    fixture = TestBed.createComponent(MainComponentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

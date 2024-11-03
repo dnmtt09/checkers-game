@@ -11,19 +11,52 @@
 // .black-color {
 //     color: ;
 // }
+.chessboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.chessboard {
+  display: grid;
+  grid-template-columns: repeat(8, 125px);
+  grid-template-rows: repeat(8, 125px);
+  gap: 5px;
+}
+
+.cell {
+  width: 130px;
+  height: 130px;
+}
+
+@media screen and (max-width: 1600px) {
+  .chessboard-container {
+    height: 100vh;
+  }
+  .chessboard {
+    grid-template-columns: repeat(8, 75px);
+    grid-template-rows: repeat(8, 75px);
+  }
+  .cell {
+    width: 80px;
+    height: 80px;
+  }
+}
 
 .black-color {
-  color: black;
+  background-color: black;
 }
 
 .red-color {
-  color: rgba(255, 0, 0, 0.614);
+  background-color: rgba(255, 0, 0, 0.614);
 }
 
 .blue-color {
-  color: rgba(0, 0, 255, 0.436);
+  background-color: rgba(0, 0, 255, 0.436);
 }
 
 button {
+  border: 1px solid;
   background: none;
 }
