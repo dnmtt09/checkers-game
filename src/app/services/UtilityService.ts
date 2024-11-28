@@ -8,7 +8,7 @@ export class UtilityService {
   private readonly totalChess: number = 64;
   private human?: Player;
   private PC?: Player;
-  private statusWaitModal = false;
+  // private statusWaitModal = false;
 
   constructor() {}
 
@@ -38,11 +38,11 @@ export class UtilityService {
     return this.chessboard;
   }
 
-  setStatusWaitModal(status: boolean) {
-    this.statusWaitModal = status;
-  }
-
-  getStatusWaitModal() {
-    return this.statusWaitModal;
-  }
+  // setStatusWaitModal(status: boolean) {
+  //   this.statusWaitModal = status;
+  // }
+  //
+  // getStatusWaitModal() {
+  //   return this.statusWaitModal;
+  // }
 }
