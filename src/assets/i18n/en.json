@@ -1,3 +1,27 @@
 {
-
+  "modalWaiting": {
+    "loading": "Loading..."
+  },
+  "menu": {
+    "reset": "Reset fields",
+    "next": "Play Game",
+    "nameApplication": "Chessboard Game",
+    "welcomeOption": "Welcome player into chessboard game",
+    "options": {
+      "newGame": "New Game",
+      "modeToPlay": "PC/Human or Uman/Uman",
+      "pcVsHuman": "PCvsUman",
+      "humanVsHuman": "UmanvsUman",
+      "colorHuman": "Choice color piece",
+      "red": "Red",
+      "blue": "Blue",
+      "degreeOfDifficult": "Choice degree difficult",
+      "low": "Low",
+      "medium": "Medium",
+      "hight": "Hight",
+      "choiceLanguage": "Set system language",
+      "it": "Italian",
+      "en": "English"
+    }
+  }
 }

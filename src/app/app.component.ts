@@ -1,27 +1,27 @@
-import { Component } from '@angular/core';
-import { CommonModule, registerLocaleData } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { ChessboardComponent } from './components/chessboard/chessboard.component';
+import {Component} from "@angular/core";
+import {CommonModule, registerLocaleData} from "@angular/common";
+import {RouterOutlet} from "@angular/router";
 
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {MenuOptionComponent} from "./menu-option-component/menu-option.component";
 
-registerLocaleData('it');
+registerLocaleData("it");
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
-  templateUrl: './app.component.html',
-  imports: [CommonModule, RouterOutlet, ChessboardComponent, TranslateModule],
+  templateUrl: "./app.component.html",
+  imports: [CommonModule, RouterOutlet, TranslateModule, MenuOptionComponent],
 })
 export class AppComponent {
-  title = 'checkers-game';
+  title = "checkers-game";
 
   constructor(private translateService: TranslateService) {
-    this.initTranslateService();
+    this.translateService.setDefaultLang("it");
+    this.setSystemLanguage();
   }
 
-  private initTranslateService(): void {
-    this.translateService.setDefaultLang('it');
-    this.translateService.use('en');
+  setSystemLanguage(language?: string) {
+    this.translateService.use(!!language ? language : "it");
   }
 }
